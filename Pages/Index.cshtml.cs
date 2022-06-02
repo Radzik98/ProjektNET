@@ -8,6 +8,7 @@ namespace ProjektNET.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        [BindProperty]
         public ProjektNET.Models.Projekt Projekt { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -24,6 +25,15 @@ namespace ProjektNET.Pages
             {
                 Name = "User";
             }
+        }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            return RedirectToPage("./Privacy");
         }
     }
 }
