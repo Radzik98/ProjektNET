@@ -8,8 +8,9 @@ namespace ProjektNET.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public Projekt Projekt { get; set; }
+        public ProjektNET.Models.Projekt Projekt { get; set; }
 
+        [BindProperty(SupportsGet = true)]
         public string Name { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
