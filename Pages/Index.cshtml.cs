@@ -6,34 +6,30 @@ namespace ProjektNET.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        [BindProperty]
-        public ProjektNET.Models.Register Register { get; set; }
-
-        [BindProperty(SupportsGet = true)]
-        public string Name { get; set; }
-
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly Data.CustomerDbContext _context;
+        public IndexModel(Data.CustomerDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
+        public IList<Customer>? Customers { get; set; }
+
+        public async Task OnGetAsync()
         {
-            if (string.IsNullOrWhiteSpace(Name))
-            {
-                Name = "User";
-            }
+            Customers = await _context.Customer.ToListAsync();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var contact = await _context.Customer.FindAsync(id);
+
+            if (contact != null)
             {
-                return Page();
+                _context.Customer.Remove(contact);
+                await _context.SaveChangesAsync();
             }
-            return RedirectToPage("./Privacy");
+
+            return RedirectToPage();
         }
     }
 }

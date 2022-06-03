@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RazorPagesContacts.Data;
+using ProjektNET.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
