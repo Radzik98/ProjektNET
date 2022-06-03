@@ -6,34 +6,32 @@ namespace ProjektNET.Pages
 {
     public class RegisterModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly Data.CustomerDbContext _context;
+
+        public RegisterModel(Data.CustomerDbContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
 
         [BindProperty]
-        public ProjektNET.Models.Register Register { get; set; }
+        public Customer? Customer { get; set; }
 
-        [BindProperty(SupportsGet = true)]
-        public string Name { get; set; }
-
-        public RegisterModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-            if (string.IsNullOrWhiteSpace(Name))
-            {
-                Name = "User";
-            }
-        }
-
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            return RedirectToPage("./Privacy");
+
+            if (Customer != null) _context.Customer.Add(Customer);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
     }
 }

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjektNET.Models
 {
-    public class Register
+    public class Customer
     {
         public int Id { get; set; }
 

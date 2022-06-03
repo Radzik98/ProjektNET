@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using RazorPagesContacts.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<CustomerDbContext>(options =>
+    options.UseInMemoryDatabase("name"));
 
 var app = builder.Build();
 
