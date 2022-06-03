@@ -1,7 +1,7 @@
 ﻿using ProjektNET.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Data.Entity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjektNET.Pages
 {
@@ -24,7 +24,7 @@ namespace ProjektNET.Pages
                 return NotFound();
             }
 
-            Customer = await _context.ProjektNET.FirstOrDefaultAsync(m => m.Id == id);
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.Id == id);
             
             if (Customer == null)
             {

@@ -1,13 +1,14 @@
 ﻿using ProjektNET.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace ProjektNET.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly Data.CustomerDbContext _context;
-        public IndexModel(Data.CustomerDbContext context)
+        readonly ProjektNET.Data.CustomerDbContext _context;
+        public IndexModel(ProjektNET.Data.CustomerDbContext context)
         {
             _context = context;
         }
