@@ -1,14 +1,14 @@
-﻿@page
-@model IndexModel
+@page
+@model RegisterModel
 @{
 ViewData["Title"] = "Fizz Buzz";
 }
 <div class="text-center">
-    <h1 class="display-4">Welcome @Model.Name</h1>
+    <h1 class="display-4">Enter your details</h1>
     <form method="post">
         <label asp-for="Register.Name"></label>
         <input asp-for="Register.Name" /><br />
         <span asp-validation-for="Register.Name" class="text-danger"></span>
-        <button type="submit">Zatwierdź</button>
+        <button type="submit">Submit</button>
     </form>
 </div>

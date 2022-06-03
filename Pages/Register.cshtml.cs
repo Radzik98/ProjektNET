@@ -1,10 +1,10 @@
-﻿using ProjektNET.Models;
+using ProjektNET.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ProjektNET.Pages
 {
-    public class IndexModel : PageModel
+    public class RegisterModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
 
@@ -14,7 +14,7 @@ namespace ProjektNET.Pages
         [BindProperty(SupportsGet = true)]
         public string Name { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public RegisterModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
