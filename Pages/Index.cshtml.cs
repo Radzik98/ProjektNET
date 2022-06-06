@@ -32,5 +32,12 @@ namespace ProjektNET.Pages
 
             return RedirectToPage();
         }
+
+        public async Task<IActionResult> OnPostCreateAsync()
+        {
+            //await _context.Customer.Add();
+            return RedirectToPage("./Register");
+        }
+
     }
 }
