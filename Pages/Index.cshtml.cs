@@ -1,20 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ProjektNET.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjektNET.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        readonly ProjektNET.Data.UserDbContext _context;
+        public IndexModel(ProjektNET.Data.UserDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<User>? Users { get; set; }
 
+        public async Task OnGetAsync()
+        {
+            Users = await _context.User.ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostCreateAsync()
+        {
+            //await _context.User.Add();
+            return RedirectToPage("./Register");
+        }
+
     }
 }
