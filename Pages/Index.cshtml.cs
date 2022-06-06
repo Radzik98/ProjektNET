@@ -7,35 +7,22 @@ namespace ProjektNET.Pages
 {
     public class IndexModel : PageModel
     {
-        readonly ProjektNET.Data.CustomerDbContext _context;
-        public IndexModel(ProjektNET.Data.CustomerDbContext context)
+        readonly ProjektNET.Data.UserDbContext _context;
+        public IndexModel(ProjektNET.Data.UserDbContext context)
         {
             _context = context;
         }
 
-        public IList<Customer>? Customers { get; set; }
+        public IList<User>? Users { get; set; }
 
         public async Task OnGetAsync()
         {
-            Customers = await _context.Customer.ToListAsync();
-        }
-
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
-        {
-            var contact = await _context.Customer.FindAsync(id);
-
-            if (contact != null)
-            {
-                _context.Customer.Remove(contact);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage();
+            Users = await _context.User.ToListAsync();
         }
 
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            //await _context.Customer.Add();
+            //await _context.User.Add();
             return RedirectToPage("./Register");
         }
 

@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace ProjektNET.Data
 {
-    public class CustomerDbContext : DbContext
+    public class UserDbContext : DbContext
     {
-        public CustomerDbContext (DbContextOptions<CustomerDbContext> options)
+        public UserDbContext (DbContextOptions<UserDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<ProjektNET.Models.Customer> Customer => Set<ProjektNET.Models.Customer>();
+        public DbSet<ProjektNET.Models.User> User => Set<ProjektNET.Models.User>();
     }
 }

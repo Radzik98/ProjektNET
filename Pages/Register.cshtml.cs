@@ -6,9 +6,9 @@ namespace ProjektNET.Pages
 {
     public class RegisterModel : PageModel
     {
-        private readonly Data.CustomerDbContext _context;
+        private readonly Data.UserDbContext _context;
 
-        public RegisterModel(Data.CustomerDbContext context)
+        public RegisterModel(Data.UserDbContext context)
         {
             _context = context;
         }
@@ -19,7 +19,7 @@ namespace ProjektNET.Pages
         }
 
         [BindProperty]
-        public Customer? Customer { get; set; }
+        public User? User { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -28,7 +28,7 @@ namespace ProjektNET.Pages
                 return Page();
             }
 
-            if (Customer != null) _context.Customer.Add(Customer);
+            if (User != null) _context.User.Add(User);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -7,15 +7,15 @@ namespace ProjektNET.Pages
 {
     public class EditModel : PageModel
     {
-        private readonly ProjektNET.Data.CustomerDbContext _context;
+        private readonly ProjektNET.Data.UserDbContext _context;
 
-        public EditModel(ProjektNET.Data.CustomerDbContext context)
+        public EditModel(ProjektNET.Data.UserDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Customer? Customer { get; set; }
+        public User? User { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -24,9 +24,9 @@ namespace ProjektNET.Pages
                 return NotFound();
             }
 
-            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.Id == id);
+            User = await _context.User.FirstOrDefaultAsync(m => m.Id == id);
             
-            if (Customer == null)
+            if (User == null)
             {
                 return NotFound();
             }
@@ -42,9 +42,9 @@ namespace ProjektNET.Pages
                 return Page();
             }
 
-            if (Customer != null)
+            if (User != null)
             {
-                _context.Attach(Customer).State = EntityState.Modified;
+                _context.Attach(User).State = EntityState.Modified;
 
                 try
                 {
@@ -52,7 +52,7 @@ namespace ProjektNET.Pages
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(Customer.Id))
+                    if (!UserExists(User.Id))
                     {
                         return NotFound();
                     }
@@ -66,9 +66,9 @@ namespace ProjektNET.Pages
             return RedirectToPage("./Index");
         }
 
-        private bool CustomerExists(int id)
+        private bool UserExists(int id)
         {
-            return _context.Customer.Any(e => e.Id == id);
+            return _context.User.Any(e => e.Id == id);
         }
     }
 }
