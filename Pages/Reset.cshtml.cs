@@ -7,15 +7,20 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjektNET.Data;
+using ProjektNET.Services;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using ProjektNET.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
  
 namespace ProjektNET.Pages
 {
     [AllowAnonymous]
     public class ResetModel : PageModel
     {
-    
+        private UserManager<User> userManager;
+
         private readonly UserDbContext Db;
  
         public ResetModel(UserDbContext Db)
@@ -36,6 +41,7 @@ namespace ProjektNET.Pages
  
         }
  
+        
         public async Task OnGetAsync(string? returnUrl = null)
         {
             returnUrl ??= Url.Content("~/"); 
@@ -54,11 +60,23 @@ namespace ProjektNET.Pages
                     ModelState.AddModelError(string.Empty, "Invalid Email");
                     return Page();
                 }
- 
-                return Redirect("/ResetConfirmation");
+                
+                var link = "https://localhost:7222/ResetPassword?email=" + user.Email;
+
+                //var link = Url.Action("ResetPassword", null, new { email = user.Email }, Request.Scheme);
+                EmailSender emailSender = new EmailSender();
+                bool emailResponse = emailSender.SendEmailPasswordReset(user.Email, link);
+    
+                if (emailResponse)
+                    return Redirect("/ResetConfirmation");
+                else
+                {
+                    // log email failed 
+                }
+                return Page();
             }
 
-            return Redirect("/ResetConfirmation");
+            return Page();
         }
     }
 }
