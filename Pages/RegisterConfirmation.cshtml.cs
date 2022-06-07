@@ -31,7 +31,7 @@ namespace ProjektNET.Pages
             var user = Db.User.Where(f=> f.Email==email).FirstOrDefault() ;
             if (user == null)
             {
-                return NotFound($"Unable to load user with email '{email}'.");
+                return NotFound($"Nie udało się załadować użytkownika z emailem: '{email}'.");
             }
  
             Email = email;
