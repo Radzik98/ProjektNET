@@ -35,11 +35,10 @@ app.UseAuthorization();
 
 app.UseAuthentication();
 
-app.UseSession();
-
-app.MapRazorPages();
-
-app.MapDefaultControllerRoute();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+});
 
 app.Run();
 
