@@ -29,8 +29,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 // }
 
-builder.Services.AddIdentity<ProjektNET.Models.User, IdentityRole>().AddRoles<IdentityRole>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

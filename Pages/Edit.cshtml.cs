@@ -20,20 +20,20 @@ namespace ProjektNET.Pages
         public User? User { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
-    {
-        if (id == null)
         {
-            return NotFound();
-        }
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        User = await _context.User.FirstOrDefaultAsync(m => m.Id == id);
-        
-        if (User == null)
-        {
-            return NotFound();
+            User = await _context.User.FirstOrDefaultAsync(m => m.Id == id);
+            
+            if (User == null)
+            {
+                return NotFound();
+            }
+            return Page();
         }
-        return Page();
-    }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
