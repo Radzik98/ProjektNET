@@ -1,3 +1,7 @@
+@using Microsoft.AspNetCore.Identity
+@using ProjektNET.Models
+@inject UserManager<User> userManager
+
 <ul class="navbar-nav">
     @if (User.Identity.IsAuthenticated)
     {
@@ -6,7 +10,10 @@
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="" asp-page="/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                <button type="submit" class="nav-link btn btn-link text-dark">Wyloguj</button>
+            </form>
+            <form class="form-inline" asp-area="" asp-page="/Edit" asp-route-returnUrl="@Url.Page("/", new { area = "" })" asp-route-id="@userManager.GetUserAsync(User).Result.Id" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Edytuj dane</button>
             </form>
         </li>
     }

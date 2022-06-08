@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using ProjektNET.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions;
+using ProjektNET.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +18,18 @@ builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+// void ConfigureServices(IServiceCollection services)
+// {
+//     services.AddIdentity<ProjektNET.Models.User, IdentityRole>()
+//         .AddEntityFrameworkStores<UserDbContext>()
+//         .AddDefaultTokenProviders()
+//         .AddRoles<IdentityRole>();
+
+
+// }
+
+builder.Services.AddIdentity<ProjektNET.Models.User, IdentityRole>().AddRoles<IdentityRole>();
 
 var app = builder.Build();
 
@@ -39,6 +55,8 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapRazorPages();
 });
+
+
 
 app.Run();
 
