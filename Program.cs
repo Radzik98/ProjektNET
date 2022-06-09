@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using ProjektNET.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using ProjektNET.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions;
 using ProjektNET.Models;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,8 +16,13 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<UserDbContext>(options =>
     options.UseInMemoryDatabase("name"));
 
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
+
+//builder.Services.AddIdentity<User, IdentityRole>()AddDefaultTokenProviders();
+
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UserDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
@@ -66,5 +73,4 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/AccessDenied";
         options.ReturnUrlParameter = "ReturnUrl";
     });
-
 
