@@ -41,6 +41,8 @@ namespace ProjektNET.Pages
         {
             returnUrl ??= Url.Content("~/");
 
+            User.Id = await _context.User.FirstOrDefaultAsync(m => m.Id == id).Id;
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -54,7 +56,7 @@ namespace ProjektNET.Pages
                 try
                 {
                     await _context.SaveChangesAsync();
-                    return RedirectToPage("./ResetPasswordCofirmation", new { email = User.Email });
+                    return RedirectToPage("ResetPasswordCofirmation", new { email = User.Email });
                 }
                 catch (DbUpdateConcurrencyException)
                 {

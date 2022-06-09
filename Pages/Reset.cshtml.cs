@@ -61,7 +61,7 @@ namespace ProjektNET.Pages
                     return Page();
                 }
                 
-                var link = "https://localhost:7222/ResetPassword?id=" + user.Id;
+                var link = "https://localhost:7222/ResetPassword/" + user.Id;
 
                 //var link = Url.Action("ResetPassword", null, new { email = user.Email }, Request.Scheme);
                 EmailSender emailSender = new EmailSender();
