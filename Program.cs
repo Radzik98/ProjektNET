@@ -26,6 +26,16 @@ builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<User
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
+// void ConfigureServices(IServiceCollection services)
+// {
+//     services.AddIdentity<ProjektNET.Models.User, IdentityRole>()
+//         .AddEntityFrameworkStores<UserDbContext>()
+//         .AddDefaultTokenProviders()
+//         .AddRoles<IdentityRole>();
+
+
+// }
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -50,6 +60,8 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapRazorPages();
 });
+
+
 
 app.Run();
 

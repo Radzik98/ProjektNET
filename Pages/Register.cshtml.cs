@@ -35,7 +35,7 @@ namespace ProjektNET.Pages
             var user = _context.User.FirstOrDefault(f => f.Email == User.Email);
             if (user != null)
             {
-                ModelState.AddModelError(string.Empty, User.Email + " Already exists" );
+                ModelState.AddModelError(string.Empty, User.Email + " Jest już używany" );
             } 
             else
             {
