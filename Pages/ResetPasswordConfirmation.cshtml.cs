@@ -12,7 +12,7 @@ namespace ProjektNET.Pages
     {
  
         
-        public ResetPasswordConfirmation()
+        public ResetPasswordConfirmationModel()
         {
         }
  
