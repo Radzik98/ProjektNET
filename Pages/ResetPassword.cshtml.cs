@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Authorization;
 namespace ProjektNET.Pages
 {
     //[Authorize]
-    public class ResetModel : PageModel
+    public class ResetPasswordModel : PageModel
     {
         private readonly ProjektNET.Data.UserDbContext _context;
 
-        public EditModel(ProjektNET.Data.UserDbContext context)
+        public ResetPasswordModel(ProjektNET.Data.UserDbContext context)
         {
             _context = context;
         }
