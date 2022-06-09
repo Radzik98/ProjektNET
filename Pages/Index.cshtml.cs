@@ -22,11 +22,5 @@ namespace ProjektNET.Pages
         {
             Users = await _context.User.ToListAsync();
         }
-
-        public async Task<IActionResult> OnPostCreateAsync()
-        {
-            return RedirectToPage("./Register");
-        }
-
     }
 }

@@ -6,8 +6,8 @@
   
 <div class="row backgroundWhite border">  
   
-    <div class="col-md-8">  
-        <form asp-route-returnUrl="@Model.OnPostAsync" method="post">    
+    <div class="col-md-8" asp-validation-summary="All">  
+        <form asp-route-returnUrl="@Model.OnPostAsync"  method="post">    
             <div class="form-group">  
                 <div class="row">  
                     <div class="col-4">  

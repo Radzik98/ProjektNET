@@ -36,6 +36,7 @@ namespace ProjektNET.Pages
             if (user != null)
             {
                 ModelState.AddModelError(string.Empty, User.Email + " Jest już używany" );
+                return Page(); 
             } 
             else
             {
