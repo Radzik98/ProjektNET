@@ -8,12 +8,12 @@ using System.Linq;
 namespace ProjektNET.Pages
 {
     [AllowAnonymous]
-    public class RegisterConfirmationModel : PageModel
+    public class EditConfirmationModel : PageModel
     {
  
         private readonly UserDbContext Db;
  
-        public RegisterConfirmationModel(UserDbContext Db)
+        public EditConfirmationModel(UserDbContext Db)
         {
             this.Db = Db;
         }
