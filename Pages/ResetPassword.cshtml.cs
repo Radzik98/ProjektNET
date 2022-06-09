@@ -54,7 +54,7 @@ namespace ProjektNET.Pages
                 try
                 {
                     await _context.SaveChangesAsync();
-                    return RedirectToPage("./ResetPasswordCofirmation", new { email = User.Email });
+                    return RedirectToPage("ResetPasswordCofirmation", new { email = User.Email });
                 }
                 catch (DbUpdateConcurrencyException)
                 {
