@@ -1,51 +1,80 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using ProjektNET.Models;
-using System.Threading.Tasks;
-using System.Security.Claims;
-using ProjektNET.Services;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ProjektNET.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjektNET.Pages
 {
-    public class ResetPassword : PageModel
+    //[Authorize]
+    public class ResetModel : PageModel
     {
-        
-        [BindProperty]
-        public ResetPasswordModel _resetPasswordModel { get; set; }
-        private readonly UserDbContext Db;
+        private readonly ProjektNET.Data.UserDbContext _context;
 
-        public ResetPasswordModel model;
- 
-        [AllowAnonymous]
-        public async Task OnGet(string email)
+        public EditModel(ProjektNET.Data.UserDbContext context)
         {
-            model = new ResetPasswordModel { Email = email };
-            // var page = Page();
+            _context = context;
         }
- 
-        public IActionResult ResetThatPassword(string email)
+
+        [BindProperty]
+        public User? User { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            model = new ResetPasswordModel { Email = email };
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            User = await _context.User.FirstOrDefaultAsync(m => m.Id == id);
+            
+            if (User == null)
+            {
+                return NotFound();
+            }
             return Page();
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> ResetThatPassword()
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
-            
+            returnUrl ??= Url.Content("~/");
+
             if (!ModelState.IsValid)
+            {
                 return Page();
- 
-            var user = Db.User.FirstOrDefault(f => f.Email == _resetPasswordModel.Email);
- 
-            user.Password =  _resetPasswordModel.Password;
- 
-            return Redirect("/ResetPasswordConfirmation");
+            }
+
+            if (User != null)
+            {
+
+                _context.Attach(User).State = EntityState.Modified;
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./ResetPasswordCofirmation", new { email = User.Email });
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UserExists(User.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            return RedirectToPage("./Index");
+        }
+
+        private bool UserExists(int? id)
+        {
+            return _context.User.Any(e => e.Id == id);
         }
     }
 }
