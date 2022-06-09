@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjektNET.Pages
 {
@@ -16,8 +17,23 @@ namespace ProjektNET.Pages
             _context = context;
         }
 
-        [BindProperty]
         public User? User { get; set; }
+        
+        [BindProperty]
+        public InputModel Input { get; set; }
+        public class InputModel
+        {
+            [Required]
+            [DataType(DataType.Password)]
+            public string Password { get; set; }
+ 
+            [Required]
+            [DataType(DataType.Password)]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
+ 
+ 
+        }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,7 +43,7 @@ namespace ProjektNET.Pages
             }
 
             User = await _context.User.FirstOrDefaultAsync(m => m.Id == id);
-            
+
             if (User == null)
             {
                 return NotFound();
@@ -37,11 +53,12 @@ namespace ProjektNET.Pages
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
+            string? returnUrl = null;
             returnUrl ??= Url.Content("~/");
 
-            User.Id = await _context.User.FirstOrDefaultAsync(m => m.Id == id).Id;
+            User = await _context.User.FirstOrDefaultAsync(m => m.Id == id);
 
             if (!ModelState.IsValid)
             {
@@ -50,13 +67,15 @@ namespace ProjektNET.Pages
 
             if (User != null)
             {
+                User.Password = Input.Password;
+                User.ConfirmPassword = Input.ConfirmPassword;
 
                 _context.Attach(User).State = EntityState.Modified;
 
                 try
                 {
                     await _context.SaveChangesAsync();
-                    return RedirectToPage("ResetPasswordCofirmation", new { email = User.Email });
+                    return RedirectToPage("ResetPasswordConfirmation", new { email = User.Email });
                 }
                 catch (DbUpdateConcurrencyException)
                 {

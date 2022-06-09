@@ -15,10 +15,13 @@ namespace ProjektNET.Pages
         public ResetPasswordConfirmationModel()
         {
         }
+
+        public string Email { get; set; }
  
  
         public async Task<IActionResult> OnGetAsync(string? email)
         {
+            Email = email;
             return Page();
         }
     }
