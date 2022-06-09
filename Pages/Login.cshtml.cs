@@ -49,7 +49,7 @@ namespace ProjektNET.Pages
             ReturnUrl = returnUrl;
         }
  
-        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
+        public async Task<IActionResult> OnPostLoginAsync(string? returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
  
@@ -81,5 +81,11 @@ namespace ProjektNET.Pages
 
             return Page();
         }
+
+        public async Task<IActionResult> OnPostResetAsync()
+        {
+            return RedirectToPage("./Reset");
+        }
+
     }
 }
