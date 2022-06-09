@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjektNET.Pages
 {
+    //[Authorize]
     public class IndexModel : PageModel
     {
         readonly ProjektNET.Data.UserDbContext _context;
@@ -22,7 +24,6 @@ namespace ProjektNET.Pages
 
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            //await _context.User.Add();
             return RedirectToPage("./Register");
         }
 

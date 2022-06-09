@@ -1,9 +1,12 @@
 using ProjektNET.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 
 namespace ProjektNET.Pages
 {
+    [AllowAnonymous]
     public class RegisterModel : PageModel
     {
         private readonly Data.UserDbContext _context;
@@ -21,17 +24,28 @@ namespace ProjektNET.Pages
         [BindProperty]
         public User? User { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public string ReturnUrl { get; set; }
+ 
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            if (!ModelState.IsValid)
+            returnUrl ??= Url.Content("~/");
+ 
+            var user = _context.User.FirstOrDefault(f => f.Email == User.Email);
+            if (user != null)
             {
-                return Page();
+                ModelState.AddModelError(string.Empty, User.Email + " Jest już używany" );
+            } 
+            else
+            {
+                user = new User { Name = User.Name, Surname = User.Surname, Email = User.Email, Password = User.Password };
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("RegisterConfirmation", new { email = User.Email });
             }
 
-            if (User != null) _context.User.Add(User);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();  
         }
     }
 }
