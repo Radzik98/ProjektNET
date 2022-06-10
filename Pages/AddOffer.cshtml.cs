@@ -10,19 +10,19 @@ namespace ProjektNET.Pages
     [AllowAnonymous]
     public class AddOfferModel : PageModel
     {
-        private readonly Data.OfferDBContext _context;
+        private readonly Data.OfferDbContext _context;
 
-        public AddOfferModel(Data.OfferDBContext context)
+        private readonly Data.UserDbContext _userContext;
+
+        public AddOfferModel(Data.OfferDbContext context, Data.UserDbContext userContext)
         {
             _context = context;
-        }
-
-        public IActionResult OnGet()
-        {
-            return Page();
+            _userContext = userContext;
         }
 
         public Offer? Offer { get; set; }
+
+        public User? User { get; set; }
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -38,19 +38,37 @@ namespace ProjektNET.Pages
  
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            User = _userContext.User.FirstOrDefault(m => m.Id == id);
+            
+            if (User == null)
+            {
+                return NotFound();
+            }
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            string returnUrl = null;
+
             returnUrl ??= Url.Content("~/");
  
-            var offer = _context.Offer.FirstOrDefault(f => f.Description == Offer.Description);
+            var offer = _context.Offer.FirstOrDefault(f => f.Description == Input.Description);
             if (offer != null)
             {
-                ModelState.AddModelError(string.Empty, Offer.Description + " Jest już wystawiony" );
+                ModelState.AddModelError(string.Empty, Input.Description + " Jest już wystawiony" );
                 return Page();
             } 
             else
             {
-                offer = new Offer { Description = Offer.Description, Category = Offer.Category, Advertizer = Offer.Advertizer, Active = Offer.Active };
+                offer = new Offer { Description = Input.Description, Category = Input.Category, Advertizer = id, Active = true };
                 _context.Add(offer);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("AddOfferConfirmation");

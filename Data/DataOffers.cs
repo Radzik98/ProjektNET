@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace ProjektNET.Data
 {
-    public class OfferDBContext : DbContext
+    public class OfferDbContext : DbContext
     {
-        public OfferDBContext (DbContextOptions<OfferDBContext> options)
+        public OfferDbContext (DbContextOptions<OfferDbContext> options)
             : base(options)
         {
         }

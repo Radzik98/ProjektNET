@@ -8,10 +8,10 @@ using System.Linq;
 namespace ProjektNET.Pages
 {
     [AllowAnonymous]
-    public class AddOfferConfirmation : PageModel
+    public class AddOfferConfirmationModel : PageModel
     {
  
-        public AddOfferConfirmation()
+        public AddOfferConfirmationModel()
         {
         }
  
