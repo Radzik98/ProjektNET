@@ -8,9 +8,6 @@
             Witaj @User.Identity.Name!
         </li>
         <li class="nav-item">
-            <form class="form-inline" asp-area="" asp-page="/AddOffer" asp-route-returnUrl="@Url.Page("/", new { area = "" })" asp-route-id="@ClaimsPrincipalExtension.GetUserId(@User)" method="get">
-                <button type="submit" class="nav-link btn btn-link text-dark">Dodaj ofertę</button>
-            </form>
             <form class="form-inline" asp-area="" asp-page="/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">Wyloguj</button>
             </form>

@@ -14,9 +14,6 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<UserDbContext>(options =>
     options.UseInMemoryDatabase("name"));
 
-builder.Services.AddDbContext<OfferDbContext>(options =>
-    options.UseInMemoryDatabase("name"));
-
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
