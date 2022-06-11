@@ -4,12 +4,13 @@
 
 <h1>Contacts home page</h1>
 <form method="post">
-    @using (Html.BeginForm())
-    {
-        <p>
-            Find by name: @Html.TextBox("SearchString")  
-            <input type="submit" value="Search" /></p>
-    }
+    
+    <p>
+        <div class="row">
+            Find by name: <input asp-for="category" class="form-control" /> 
+            <button type="submit" class="btn btn-primary" asp-page-handler="sort">Filtruj</button>
+        </div>
+    </p>
     <table class="table">
         <thead>
             <tr>

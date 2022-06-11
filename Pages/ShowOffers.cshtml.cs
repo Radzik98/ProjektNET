@@ -14,14 +14,23 @@ namespace ProjektNET.Pages
             _context = context;
         }
 
+        [BindProperty]
+        public string? category { get; set; }
+
         public IEnumerable<Offer>? Offers { get; set; }
 
-        public void sort(string searchString)
+        public async Task<IActionResult> OnPostSortAsync(string returnUrl = null)
         {
-            if (!String.IsNullOrEmpty(searchString))
+            returnUrl = returnUrl ?? Url.Content("~/");
+            if (!String.IsNullOrEmpty(category))
             {
-                Offers = Offers.Where(o => o.Category.Contains(searchString));
+                Offers = _context.Offer.Where(o => o.Category == category);
             }
+            else
+            {
+                Offers = _context.Offer;
+            }
+            return Page();
         }
 
         public async Task OnGetAsync()
