@@ -15,6 +15,10 @@ namespace ProjektNET.Models
         [Required, StringLength(20)]
         public string? Category { get; set; }
 
+        [Display(Name = "Lokalizacja")]
+        [Required, StringLength(20)]
+        public string? Location { get; set; }
+
         public int? Advertizer { get; set; }
 
         public bool? Active { get; set; }
