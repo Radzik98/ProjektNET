@@ -7,8 +7,18 @@
     
     <p>
         <div class="row">
-            Find by name: <input asp-for="category" class="form-control" /> 
+            Filtruj według kategorii:
+            <input asp-for="category" class="form-control" /> 
             <button type="submit" class="btn btn-primary" asp-page-handler="sort">Filtruj</button>
+        </div>
+    </p>
+    <p>
+        <div class="row">
+            Filtruj według kategorii:
+            <input asp-for="category2" class="form-control" />
+            <input asp-for="description" class="form-control" /> 
+            <input asp-for="location" class="form-control" /> 
+            <button type="submit" class="btn btn-primary" asp-page-handler="search">Filtruj</button>
         </div>
     </p>
     <table class="table">
@@ -16,6 +26,7 @@
             <tr>
                 <th>Opis</th>
                 <th>Kategoria</th>
+                <th>Lokalizacja</th>
                 <th>Wystawiający</th>
             </tr>
         </thead>
@@ -29,6 +40,7 @@
                     <tr>
                         <td> @offer.Description </td>
                         <td> @offer.Category </td>
+                        <td> @offer.Location </td>
                         <td> @offer.Advertizer </td>
                         @* <td>
                             <!-- <snippet_Edit> -->
