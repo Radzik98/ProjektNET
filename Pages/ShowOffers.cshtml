@@ -4,6 +4,12 @@
 
 <h1>Contacts home page</h1>
 <form method="post">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find by name: @Html.TextBox("SearchString")  
+            <input type="submit" value="Search" /></p>
+    }
     <table class="table">
         <thead>
             <tr>

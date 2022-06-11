@@ -14,7 +14,15 @@ namespace ProjektNET.Pages
             _context = context;
         }
 
-        public IList<Offer>? Offers { get; set; }
+        public IEnumerable<Offer>? Offers { get; set; }
+
+        public void sort(string searchString)
+        {
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Offers = Offers.Where(o => o.Category.Contains(searchString));
+            }
+        }
 
         public async Task OnGetAsync()
         {
