@@ -33,6 +33,9 @@ namespace ProjektNET.Pages
  
             [Required]
             public string Category { get; set; }
+
+            [Required]
+            public string Location { get; set; }
         }
         public string ReturnUrl { get; set; }
  
@@ -68,7 +71,7 @@ namespace ProjektNET.Pages
             } 
             else
             {
-                offer = new Offer { Description = Input.Description, Category = Input.Category, Advertizer = id, Active = true };
+                offer = new Offer { Description = Input.Description, Category = Input.Category, Location = Input.Location, Advertizer = id, Active = true };
                 _context.Add(offer);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("AddOfferConfirmation");
