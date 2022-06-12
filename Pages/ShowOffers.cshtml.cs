@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using ProjektNET.Extensions;
 
 namespace ProjektNET.Pages
 {
@@ -69,15 +71,27 @@ namespace ProjektNET.Pages
                 Offers = _context.Offer;
                 return Page();
             }
-            // if (!String.IsNullOrEmpty(category2))
-            // {
-            //     Offers = _context.Offer.Where(o => o.Category == category2);
-            // }
-            // else
-            // {
-            //     Offers = _context.Offer;
-            // }
-            // return Page();
+        }
+
+        public async Task<IActionResult> OnPostInterestedAsync(int? id, string returnUrl = null)
+        {
+            returnUrl = returnUrl ?? Url.Content("~/");
+            var offer = _context.Offer.First(o => o.Id == id);
+            if(offer.Interested == 0)
+            {
+                offer.Interested = ClaimsPrincipalExtension.GetUserId(User);
+                await _context.SaveChangesAsync();
+                Offers = _context.Offer;
+                return Page();
+            }
+            else
+            {
+                offer.Interested = 0;
+                await _context.SaveChangesAsync();
+                Offers = _context.Offer;
+                return Page();
+            }
+            
         }
 
         public async Task OnGetAsync()

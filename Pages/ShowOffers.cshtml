@@ -1,6 +1,7 @@
 @page
 @model ProjektNET.Pages.ShowOfferModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ProjektNET.Extensions
 
 <h1>Contacts home page</h1>
 <form method="post">
@@ -42,14 +43,22 @@
                         <td> @offer.Category </td>
                         <td> @offer.Location </td>
                         <td> @offer.Advertizer </td>
-                        @* <td>
-                            <!-- <snippet_Edit> -->
-                            <a asp-page="./EditOffer" asp-route-id="@offer.Advertizer">Edit</a> |
-                            <!-- </snippet_Edit> -->
-                            <!-- <snippet_Delete> -->
-                            <button type="submit" asp-page-handler="delete" asp-route-id="@offer.Advertizer">delete</button>
-                            <!-- </snippet_Delete> -->
-                        </td> *@
+                        <td>
+                            @if (@offer.Interested == 0)
+                            {
+                                <!-- <snippet_Interested> -->
+                                <button type="submit" asp-page-handler="interested">Jestem zainteresowany ofertą</button>
+                                <input type="hidden" name="id" value="@offer.Id" />
+                                <!-- </snippet_Interested> -->
+                            }
+                            @if (@offer.Interested == @ClaimsPrincipalExtension.GetUserId(@User))
+                            {
+                                <!-- <snippet_Interested> -->
+                                <button type="submit" asp-page-handler="interested">Odwołuję zainteresowanie ofertą</button>
+                                <input type="hidden" name="id" value="@offer.Id" />
+                                <!-- </snippet_Interested> -->
+                            }
+                        </td>
                     </tr>
                 }
             }
