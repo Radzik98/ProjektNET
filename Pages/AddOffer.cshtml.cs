@@ -71,7 +71,7 @@ namespace ProjektNET.Pages
             } 
             else
             {
-                offer = new Offer { Description = Input.Description, Category = Input.Category, Location = Input.Location, Advertizer = id, Active = true };
+                offer = new Offer { Description = Input.Description, Category = Input.Category, Location = Input.Location, Interested = 0, Advertizer = id, Active = true };
                 _context.Add(offer);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("AddOfferConfirmation");
