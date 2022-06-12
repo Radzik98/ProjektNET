@@ -76,9 +76,9 @@ namespace ProjektNET.Pages
         public async Task<IActionResult> OnPostInterestedAsync(int? id, string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
-            if(id == 0)
+            var offer = _context.Offer.First(o => o.Id == id);
+            if(offer.Interested == 0)
             {
-                var offer = _context.Offer.First(o => o.Id == id);
                 offer.Interested = ClaimsPrincipalExtension.GetUserId(User);
                 await _context.SaveChangesAsync();
                 Offers = _context.Offer;
@@ -86,7 +86,6 @@ namespace ProjektNET.Pages
             }
             else
             {
-                var offer = _context.Offer.First(o => o.Id == id);
                 offer.Interested = 0;
                 await _context.SaveChangesAsync();
                 Offers = _context.Offer;

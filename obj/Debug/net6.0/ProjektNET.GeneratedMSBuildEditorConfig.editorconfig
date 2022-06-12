@@ -8,97 +8,97 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProjektNET
 build_property.RootNamespace = ProjektNET
-build_property.ProjectDir = /home/admin/net/ProjektNET/
+build_property.ProjectDir = C:\Users\zamor\OneDrive\Studia\PB\Semestr 4 22L\.NET\ProjektNET\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/admin/net/ProjektNET
+build_property.MSBuildProjectDirectory = C:\Users\zamor\OneDrive\Studia\PB\Semestr 4 22L\.NET\ProjektNET
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/admin/net/ProjektNET/Models/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = TW9kZWxzL19WaWV3SW1wb3J0cy5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Models/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TW9kZWxzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/AddOffer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkT2ZmZXIuY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/AddOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkT2ZmZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/AddOfferConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkT2ZmZXJDb25maXJtYXRpb24uY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/AddOfferConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkT2ZmZXJDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdC5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/EditConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdENvbmZpcm1hdGlvbi5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/EditConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4uY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Logout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nb3V0LmNzaHRtbA==
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIuY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/RegisterConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXJDb25maXJtYXRpb24uY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/RegisterConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Reset.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXQuY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Reset.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/ResetConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXRDb25maXJtYXRpb24uY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/ResetConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXRDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/ResetPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXRQYXNzd29yZC5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/ResetPasswordConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXRQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/ResetPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXRQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/ShowOffers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hvd09mZmVycy5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/ShowOffers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hvd09mZmVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/admin/net/ProjektNET/Pages/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-m3a4fkhhif
+[C:/Users/zamor/OneDrive/Studia/PB/Semestr 4 22L/.NET/ProjektNET/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-q8n45x08eg
