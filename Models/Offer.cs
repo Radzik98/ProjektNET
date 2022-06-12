@@ -19,6 +19,8 @@ namespace ProjektNET.Models
         [Required, StringLength(20)]
         public string? Location { get; set; }
 
+        public int? Interested { get; set; }
+
         public int? Advertizer { get; set; }
 
         public bool? Active { get; set; }
