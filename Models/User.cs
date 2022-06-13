@@ -8,6 +8,8 @@ namespace ProjektNET.Models
 
         public int Id { get; set; }
 
+        public bool IsAdvertizer { get; set; } = false;
+
         [Display(Name = "Imię")]
         [Required, StringLength(10)]
         public string? Name { get; set; }
