@@ -64,6 +64,7 @@ namespace ProjektNET.Pages
             returnUrl ??= Url.Content("~/");
  
             var offer = _context.Offer.FirstOrDefault(f => f.Description == Input.Description);
+            var user = _context.User.FirstOrDef
             if (offer != null)
             {
                 ModelState.AddModelError(string.Empty, Input.Description + " Jest już wystawiony" );
