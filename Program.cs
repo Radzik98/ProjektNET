@@ -17,6 +17,9 @@ builder.Services.AddDbContext<UserDbContext>(options =>
 builder.Services.AddDbContext<OfferDbContext>(options =>
     options.UseInMemoryDatabase("name"));
 
+builder.Services.AddDbContext<RateDbContext>(options =>
+    options.UseInMemoryDatabase("name"));
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 

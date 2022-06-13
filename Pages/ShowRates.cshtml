@@ -1,0 +1,27 @@
+@page "{id:int?}"
+@model ProjektNET.Pages.ShowRatesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ProjektNET.Extensions
+
+<h1>Opinie</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ocena</th>
+            <th>Komentarz</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Rates != null)
+    {
+        foreach (var rate in Model.Rates)
+        {
+            <tr>
+                <td> @rate.RateValue </td>
+                <td> @rate.Comment </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
