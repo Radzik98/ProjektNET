@@ -93,6 +93,16 @@ namespace ProjektNET.Pages
             }
         }
 
+        public async Task<IActionResult> OnPostCompletedAsync(int? id, string returnUrl = null)
+        {
+            returnUrl = returnUrl ?? Url.Content("~/");
+            var offer = _context.Offer.First(o => o.Id == id);
+            offer.Active = false;
+            await _context.SaveChangesAsync();
+            Offers = _context.Offer;
+            return Page();
+        }
+
         public async Task OnGetAsync()
         {
             Offers = await _context.Offer.ToListAsync();
