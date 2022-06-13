@@ -26,11 +26,16 @@ namespace ProjektNET.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(int? id, string returnUrl = null)
         {
+            AdvertizerId = id;
             returnUrl ??= Url.Content("~/");
- 
+            if(Rate.Comment == null || Rate.RateValue == null)
+            {
+                return Page();
+            }
             //var rate = _context.Rate.FirstOrDefault(f => f.Id = Rate.Id);
+            //var rate = _context.Rate.FirstOrDefault(f => f.Id == 1000000000);
             var rate = new Rate { RateValue = Rate.RateValue, Comment = Rate.Comment, Advertizer = AdvertizerId };
             
             _context.Add(rate);

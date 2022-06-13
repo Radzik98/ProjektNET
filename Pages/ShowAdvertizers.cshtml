@@ -32,15 +32,15 @@
                             @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
                             {
                                 <!-- <snippet_RateAdvertizer> -->
-                                <button type="submit" asp-page="RateAdvertizer" asp-route-id="@user.Id">Oceń wystawiającego</button>
+                                <button type="submit" asp-page="RateAdvertizer" asp-route-returnUrl="@Url.Page("/", new { area = "" })" asp-route-id="@user.Id">Oceń wystawiającego</button>
                                 <!-- </snippet_Rate> -->
                             }
                         </form>
-                        @* <form method="post">
+                        <form method="post">
                             <!-- <snippet_ShowRates> -->
-                            <button type="submit" asp-page="ShowRates" asp-route-id="@user.Id">Pokaż opinie o wystawiającym</button>
+                            <button type="submit" asp-page="ShowRates" asp-route-returnUrl="@Url.Page("/", new { area = "" })" asp-route-id="@user.Id">Pokaż opinie o wystawiającym</button>
                             <!-- </snippet_ShowRates> -->
-                        </form> *@
+                        </form>
                     </td>
                 </tr>
             }
