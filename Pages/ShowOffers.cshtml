@@ -5,7 +5,6 @@
 
 <h1>Contacts home page</h1>
 <form method="post">
-    
     <p>
         <div class="row">
             Filtruj według kategorii:
@@ -22,28 +21,32 @@
             <button type="submit" class="btn btn-primary" asp-page-handler="search">Filtruj</button>
         </div>
     </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Opis</th>
-                <th>Kategoria</th>
-                <th>Lokalizacja</th>
-                <th>Wystawiający</th>
-            </tr>
-        </thead>
-        <tbody>
-        @if (Model.Offers != null)
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Opis</th>
+            <th>Kategoria</th>
+            <th>Lokalizacja</th>
+            <th>Wystawiający</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Offers != null)
+    {
+        foreach (var offer in Model.Offers)
         {
-            foreach (var offer in Model.Offers)
+            
+            if(@offer.Active == true)
             {
-                if(@offer.Active == true)
-                {
-                    <tr>
-                        <td> @offer.Description </td>
-                        <td> @offer.Category </td>
-                        <td> @offer.Location </td>
-                        <td> @offer.Advertizer </td>
-                        <td>
+                <tr>
+                    <td> @offer.Description </td>
+                    <td> @offer.Category </td>
+                    <td> @offer.Location </td>
+                    <td> @offer.Advertizer </td>
+                    <td> @offer.Id </td>
+                    <td>
+                        <form method="post">
                             @if (@offer.Interested == 0)
                             {
                                 <!-- <snippet_Interested> -->
@@ -58,12 +61,23 @@
                                 <input type="hidden" name="id" value="@offer.Id" />
                                 <!-- </snippet_Interested> -->
                             }
-                        </td>
-                    </tr>
-                }
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post">
+                            @if (@offer.Advertizer == @ClaimsPrincipalExtension.GetUserId(@User))
+                            {
+                                <!-- <snippet_Completed> -->
+                                <button type="submit" asp-page-handler="completed">Oznacz ofertę jako zrealizowaną</button>
+                                <input type="hidden" name="id" value="@offer.Id" />
+                                <!-- </snippet_Completed> -->
+                            }
+                        </form>
+                    <td/>
+                </tr>
             }
         }
-        </tbody>
-    </table>
-    <a asp-page="AddOffer">Create New</a>
-</form>
+    }
+    </tbody>
+</table>
+<a asp-page="AddOffer">Create New</a>
