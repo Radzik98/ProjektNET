@@ -1,0 +1,64 @@
+@page
+@model ProjektNET.Pages.ShowAdvertizerModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ProjektNET.Extensions
+
+<h1>Wystawiający</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numer</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Adres e-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Users != null)
+    {
+        foreach (var user in Model.Users)
+        {
+            
+            if(@user.IsAdvertizer == true)
+            {
+                <tr>
+                    <td> @user.Id </td>
+                    <td> @user.Name </td>
+                    <td> @user.Surname </td>
+                    <td> @user.Email </td>
+                    @* <td>
+                        <form method="post">
+                            @if (@offer.Interested == 0)
+                            {
+                                <!-- <snippet_Interested> -->
+                                <button type="submit" asp-page-handler="interested">Jestem zainteresowany ofertą</button>
+                                <input type="hidden" name="id" value="@offer.Id" />
+                                <!-- </snippet_Interested> -->
+                            }
+                            @if (@offer.Interested == @ClaimsPrincipalExtension.GetUserId(@User))
+                            {
+                                <!-- <snippet_Interested> -->
+                                <button type="submit" asp-page-handler="interested">Odwołuję zainteresowanie ofertą</button>
+                                <input type="hidden" name="id" value="@offer.Id" />
+                                <!-- </snippet_Interested> -->
+                            }
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post">
+                            @if (@offer.Advertizer == @ClaimsPrincipalExtension.GetUserId(@User))
+                            {
+                                <!-- <snippet_Completed> -->
+                                <button type="submit" asp-page-handler="completed">Oznacz ofertę jako zrealizowaną</button>
+                                <input type="hidden" name="id" value="@offer.Id" />
+                                <!-- </snippet_Completed> -->
+                            }
+                        </form>
+                    <td/> *@
+                </tr>
+            }
+        }
+    }
+    </tbody>
+</table>

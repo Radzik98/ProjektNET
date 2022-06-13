@@ -64,7 +64,8 @@ namespace ProjektNET.Pages
             returnUrl ??= Url.Content("~/");
  
             var offer = _context.Offer.FirstOrDefault(f => f.Description == Input.Description);
-            var user = _context.User.FirstOrDef
+            var user = _userContext.User.FirstOrDefault(f => f.Id == id);
+
             if (offer != null)
             {
                 ModelState.AddModelError(string.Empty, Input.Description + " Jest już wystawiony" );
@@ -75,6 +76,10 @@ namespace ProjektNET.Pages
                 offer = new Offer { Description = Input.Description, Category = Input.Category, Location = Input.Location, Interested = 0, Advertizer = id, Active = true };
                 _context.Add(offer);
                 await _context.SaveChangesAsync();
+
+                user.IsAdvertizer = true;
+                await _userContext.SaveChangesAsync();
+                
                 return RedirectToPage("AddOfferConfirmation");
             }
 
