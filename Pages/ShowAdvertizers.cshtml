@@ -27,35 +27,21 @@
                     <td> @user.Name </td>
                     <td> @user.Surname </td>
                     <td> @user.Email </td>
-                    @* <td>
-                        <form method="post">
-                            @if (@offer.Interested == 0)
-                            {
-                                <!-- <snippet_Interested> -->
-                                <button type="submit" asp-page-handler="interested">Jestem zainteresowany ofertą</button>
-                                <input type="hidden" name="id" value="@offer.Id" />
-                                <!-- </snippet_Interested> -->
-                            }
-                            @if (@offer.Interested == @ClaimsPrincipalExtension.GetUserId(@User))
-                            {
-                                <!-- <snippet_Interested> -->
-                                <button type="submit" asp-page-handler="interested">Odwołuję zainteresowanie ofertą</button>
-                                <input type="hidden" name="id" value="@offer.Id" />
-                                <!-- </snippet_Interested> -->
-                            }
-                        </form>
-                    </td>
                     <td>
                         <form method="post">
-                            @if (@offer.Advertizer == @ClaimsPrincipalExtension.GetUserId(@User))
+                            @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
                             {
-                                <!-- <snippet_Completed> -->
-                                <button type="submit" asp-page-handler="completed">Oznacz ofertę jako zrealizowaną</button>
-                                <input type="hidden" name="id" value="@offer.Id" />
-                                <!-- </snippet_Completed> -->
+                                <!-- <snippet_RateAdvertizer> -->
+                                <button type="submit" asp-page="RateAdvertizer" asp-route-id="@user.Id">Oceń wystawiającego</button>
+                                <!-- </snippet_Rate> -->
                             }
                         </form>
-                    <td/> *@
+                        @* <form method="post">
+                            <!-- <snippet_ShowRates> -->
+                            <button type="submit" asp-page="ShowRates" asp-route-id="@user.Id">Pokaż opinie o wystawiającym</button>
+                            <!-- </snippet_ShowRates> -->
+                        </form> *@
+                    </td>
                 </tr>
             }
         }
