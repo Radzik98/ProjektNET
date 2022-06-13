@@ -23,5 +23,15 @@ namespace ProjektNET.Pages
         {
             Users = await _context.User.ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostRateAsync(int? id)
+        {
+            return Redirect("~/RateAdvertizer/" + id);
+        }
+
+        public async Task<IActionResult> OnPostShowOpinionsAsync(int? id)
+        {
+            return Redirect("~/ShowRates/" + id);
+        }
     }
 }
