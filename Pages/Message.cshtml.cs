@@ -8,20 +8,20 @@ using ProjektNET.Extensions;
 
 namespace ProjektNET.Pages
 {
-    public class ShowAdvertizerModel : PageModel
+    public class MessageModel : PageModel
     {
-        private readonly Data.UserDbContext _context;
-        public ShowAdvertizerModel(Data.UserDbContext context)
+        private readonly Data.MessageDbContext _context;
+        public MessageModel(Data.MessageDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public IEnumerable<User>? Users { get; set; }
+        public IEnumerable<Message>? Messages { get; set; }
 
         public async Task OnGetAsync()
         {
-            Users = await _context.User.ToListAsync();
+            Messages = await _context.Message.Where(t => t.).ToListAsync();
         }
 
         public async Task<IActionResult> OnPostRateAsync(int? id)
