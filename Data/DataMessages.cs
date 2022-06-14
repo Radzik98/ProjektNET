@@ -5,7 +5,7 @@ namespace ProjektNET.Data
 {
     public class MessageDbContext : DbContext
     {
-        public MessageDbContext(DbContextOptions<UserDbContext> options)
+        public MessageDbContext(DbContextOptions<MessageDbContext> options)
             : base(options)
         {
         }

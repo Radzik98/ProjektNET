@@ -12,8 +12,10 @@ namespace ProjektNET.Models
         [Required, StringLength(100)]
         public string? Value { get; set; }
 
-        public string? AdvertizerId { get; set; }
+        public int? AdvertizerId { get; set; }
 
-        public string? ClientId { get; set; }
+        public int? ClientId { get; set; }
+
+        public int? SenderId { get; set; }
     }
 }

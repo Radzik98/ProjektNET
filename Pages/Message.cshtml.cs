@@ -19,23 +19,39 @@ namespace ProjektNET.Pages
         [BindProperty]
         public IEnumerable<Message>? Messages { get; set; }
 
-        public async Task OnGetAsync()
+        [BindProperty]
+        public string value { get; set; }
+
+        [BindProperty]
+        public int? specialId { get; set; }
+
+        public int? AdvertizerId { get; set; }
+
+        public int? ClientId { get; set; }
+
+        public async Task OnGetAsync(int? advertizerId, int? clientId)
         {
-            Messages = await _context.Message.Where(t => t.).ToListAsync();
+            Messages = await _context.Message.Where(t => t.ClientId == clientId).ToListAsync();
+            specialId = clientId;
+            AdvertizerId = advertizerId;
+            ClientId = clientId;
         }
 
-        public async Task<IActionResult> OnPostRateAsync(int? id)
+        public async Task<IActionResult> OnPostClientMessageAsync(int? advertizerId, int? clientId)
         {
-            return Redirect("~/RateAdvertizer/" + id);
+            var message = new Message { Value = value, AdvertizerId = advertizerId, ClientId = clientId, SenderId = clientId };
+            _context.Add(message);
+            await _context.SaveChangesAsync();
+            Messages = await _context.Message.Where(t => t.ClientId == clientId).ToListAsync();
+            return Redirect("~/Message/" + advertizerId + "/" + clientId);
         }
 
-        public async Task<IActionResult> OnPostShowOpinionsAsync(int? id)
+        public async Task<IActionResult> OnPostAdvertizerMessageAsync(int? advertizerId, int? clientId)
         {
-            return Redirect("~/ShowRates/" + id);
-        }
-
-        public async Task<IActionResult> OnPostMessageAsync(int? advertizerId, int? clientId)
-        {
+            var message = new Message { Value = value, AdvertizerId = advertizerId, ClientId = clientId, SenderId = advertizerId };
+            _context.Add(message);
+            await _context.SaveChangesAsync();
+            Messages = await _context.Message.Where(t => t.ClientId == clientId).ToListAsync();
             return Redirect("~/Message/" + advertizerId + "/" + clientId);
         }
     }

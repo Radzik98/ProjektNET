@@ -1,44 +1,54 @@
-@page
-@model ProjektNET.Pages.LoginModel
- 
-@{
-    ViewData["Title"] = "Log in";
-}
- 
- 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form method="post">
-                <h4>Zaloguj się</h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Input!.Email"></label>
-                    <input asp-for="Input!.Email" class="form-control" />
-                    <span asp-validation-for="Input!.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input!.Password"></label>
-                    <input asp-for="Input!.Password" class="form-control" />
-                    <span asp-validation-for="Input!.Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" asp-page-handler="Login">Zaloguj się</button>
-                </div>
-            </form>
-        </section>
-        <section>
-            <form method="post">
-                <div class="form-group">
-                    <a asp-page="Reset">Forgot my password</a>
-                </div>
-            </form>
-        </section>
-    </div>
-</div>
- 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+@page "{advertizerId:int?}/{clientId:int?}"
+@model ProjektNET.Pages.MessageModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ProjektNET.Extensions
+
+<h1>Wiadomości</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ty</th>
+            <th>Wlasciciel</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Messages != null)
+    {
+        foreach (var message in Model.Messages)
+        {
+            <tr>
+                <td>
+                    @if (@message.ClientId == @message.SenderId)
+                    {
+                        @message.Value
+                    }
+                </td>
+                <td>
+                    @if (@message.AdvertizerId == @message.SenderId)
+                    {
+                        @message.Value
+                    }
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+<form method="post">
+    <p>
+        <div class="row">
+            Wyślij wiadomość:
+            <input asp-for="value" class="form-control" />
+            @if (Model.specialId == @ClaimsPrincipalExtension.GetUserId(@User))
+            {
+                <button type="submit" class="btn btn-primary" asp-page-handler="ClientMessage">Filtruj</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-primary" asp-page-handler="AdvertizerMessage">Filtruj</button>
+            }
+        </div>
+    </p>
+</form>
