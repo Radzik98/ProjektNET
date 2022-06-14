@@ -34,8 +34,7 @@ namespace ProjektNET.Pages
             {
                 return Page();
             }
-            //var rate = _context.Rate.FirstOrDefault(f => f.Id = Rate.Id);
-            //var rate = _context.Rate.FirstOrDefault(f => f.Id == 1000000000);
+
             var rate = new Rate { RateValue = Rate.RateValue, Comment = Rate.Comment, Advertizer = AdvertizerId };
             
             _context.Add(rate);

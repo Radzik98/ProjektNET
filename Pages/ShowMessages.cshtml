@@ -1,0 +1,40 @@
+@page "{advertizerId:int?}"
+@model ProjektNET.Pages.ShowMessagesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ProjektNET.Extensions
+
+<h1>Wiadomości</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numer</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Adres e-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Users != null)
+    {
+        foreach (var user in Model.Users)
+        {
+            <tr>
+                <td> @user.Id </td>
+                <td> @user.Name </td>
+                <td> @user.Surname </td>
+                <td> @user.Email </td>
+                <td>
+                        <form method="post">
+                            <!-- <snippet_Message> -->
+                            <button type="submit" asp-page-handler="message">Napisz wiadomość</button>
+                            <input type="hidden" name="advertizerId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
+                            <input type="hidden" name="clientId" value="@user.Id" />
+                            <!-- </snippet_Message> -->
+                        </form>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
