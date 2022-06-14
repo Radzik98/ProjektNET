@@ -52,6 +52,13 @@
                                 <input type="hidden" name="clientId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
                                 <!-- </snippet_Message> -->
                             }
+                            @if (@user.Id == @ClaimsPrincipalExtension.GetUserId(@User))
+                            {
+                                <!-- <snippet_ShowMessages> -->
+                                <button type="submit" asp-page-handler="showMessages">Zobacz wiadomości</button>
+                                <input type="hidden" name="advertizerId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
+                                <!-- </snippet_ShowMessages> -->
+                            }
                         </form>
                     </td>
                 </tr>
