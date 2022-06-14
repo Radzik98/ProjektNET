@@ -31,17 +31,34 @@
                         <form method="post">
                             @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
                             {
-                                <!-- <snippet_RateAdvertizer> -->
+                                <!-- <snippet_Rate> -->
                                 <button type="submit" asp-page-handler="rate">Oceń wystawiającego</button>
                                 <input type="hidden" name="id" value="@user.Id" />
                                 <!-- </snippet_Rate> -->
                             }
                         </form>
                         <form method="post">
-                            <!-- <snippet_ShowRates> -->
+                            <!-- <snippet_ShowOpinions> -->
                             <button type="submit" asp-page-handler="showOpinions">Pokaż opinie o wystawiającym</button>
                             <input type="hidden" name="id" value="@user.Id" />
-                            <!-- </snippet_ShowRates> -->
+                            <!-- </snippet_ShowOpinions> -->
+                        </form>
+                        <form method="post">
+                            @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
+                            {
+                                <!-- <snippet_Message> -->
+                                <button type="submit" asp-page-handler="message">Napisz wiadomość</button>
+                                <input type="hidden" name="advertizerId" value="@user.Id" />
+                                <input type="hidden" name="clientId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
+                                <!-- </snippet_Message> -->
+                            }
+                            @if (@user.Id == @ClaimsPrincipalExtension.GetUserId(@User))
+                            {
+                                <!-- <snippet_ShowMessages> -->
+                                <button type="submit" asp-page-handler="showMessages">Zobacz wiadomości</button>
+                                <input type="hidden" name="advertizerId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
+                                <!-- </snippet_ShowMessages> -->
+                            }
                         </form>
                     </td>
                 </tr>

@@ -20,6 +20,9 @@ builder.Services.AddDbContext<OfferDbContext>(options =>
 builder.Services.AddDbContext<RateDbContext>(options =>
     options.UseInMemoryDatabase("name"));
 
+builder.Services.AddDbContext<MessageDbContext>(options =>
+    options.UseInMemoryDatabase("name"));
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 

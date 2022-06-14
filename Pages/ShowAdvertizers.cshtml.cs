@@ -33,5 +33,15 @@ namespace ProjektNET.Pages
         {
             return Redirect("~/ShowRates/" + id);
         }
+
+        public async Task<IActionResult> OnPostMessageAsync(int? advertizerId, int? clientId)
+        {
+            return Redirect("~/Message/" + advertizerId + "/" + clientId);
+        }
+
+        public async Task<IActionResult> OnPostShowMessagesAsync(int? advertizerId)
+        {
+            return Redirect("~/ShowMessages/" + advertizerId);
+        }
     }
 }
