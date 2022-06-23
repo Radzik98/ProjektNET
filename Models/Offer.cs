@@ -12,11 +12,11 @@ namespace ProjektNET.Models
         public string? Description { get; set; }
 
         [Display(Name = "Kategoria")]
-        [Required, StringLength(20)]
+        [Required, StringLength(100)]
         public string? Category { get; set; }
 
         [Display(Name = "Lokalizacja")]
-        [Required, StringLength(20)]
+        [Required, StringLength(100)]
         public string? Location { get; set; }
 
         public int? Interested { get; set; }
