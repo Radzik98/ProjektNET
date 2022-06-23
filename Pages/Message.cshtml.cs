@@ -10,8 +10,8 @@ namespace ProjektNET.Pages
 {
     public class MessageModel : PageModel
     {
-        private readonly Data.MessageDbContext _context;
-        public MessageModel(Data.MessageDbContext context)
+        private readonly Data.MyDbContext _context;
+        public MessageModel(Data.MyDbContext context)
         {
             _context = context;
         }

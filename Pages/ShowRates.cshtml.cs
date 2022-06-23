@@ -10,8 +10,8 @@ namespace ProjektNET.Pages
 {
     public class ShowRatesModel : PageModel
     {
-        private readonly Data.RateDbContext _context;
-        public ShowRatesModel(Data.RateDbContext context)
+        private readonly Data.MyDbContext _context;
+        public ShowRatesModel(Data.MyDbContext context)
         {
             _context = context;
         }

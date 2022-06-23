@@ -7,14 +7,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjektNET.Pages
 {
-    [AllowAnonymous]
     public class AddOfferModel : PageModel
     {
-        private readonly Data.OfferDbContext _context;
+        private readonly Data.MyDbContext _context;
 
-        private readonly Data.UserDbContext _userContext;
+        private readonly Data.MyDbContext _userContext;
 
-        public AddOfferModel(Data.OfferDbContext context, Data.UserDbContext userContext)
+        public AddOfferModel(Data.MyDbContext context, Data.MyDbContext userContext)
         {
             _context = context;
             _userContext = userContext;

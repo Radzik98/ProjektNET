@@ -10,8 +10,8 @@ namespace ProjektNET.Pages
 {
     public class ShowAdvertizerModel : PageModel
     {
-        private readonly Data.UserDbContext _context;
-        public ShowAdvertizerModel(Data.UserDbContext context)
+        private readonly Data.MyDbContext _context;
+        public ShowAdvertizerModel(Data.MyDbContext context)
         {
             _context = context;
         }

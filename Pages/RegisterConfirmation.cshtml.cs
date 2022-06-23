@@ -11,9 +11,9 @@ namespace ProjektNET.Pages
     public class RegisterConfirmationModel : PageModel
     {
  
-        private readonly UserDbContext Db;
+        private readonly MyDbContext Db;
  
-        public RegisterConfirmationModel(UserDbContext Db)
+        public RegisterConfirmationModel(MyDbContext Db)
         {
             this.Db = Db;
         }

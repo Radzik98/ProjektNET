@@ -6,12 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ProjektNET.Pages
 {
-    //[Authorize]
     public class EditModel : PageModel
     {
-        private readonly ProjektNET.Data.UserDbContext _context;
+        private readonly ProjektNET.Data.MyDbContext _context;
 
-        public EditModel(ProjektNET.Data.UserDbContext context)
+        public EditModel(ProjektNET.Data.MyDbContext context)
         {
             _context = context;
         }

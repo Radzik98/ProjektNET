@@ -2,68 +2,81 @@
 @model ProjektNET.Pages.ShowAdvertizerModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using ProjektNET.Extensions
+@using Microsoft.AspNetCore.Identity
 
-<h1>Wystawiający</h1>
+@if(User.Identity.IsAuthenticated)
+{
+    <h1>Wystawiający</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Numer</th>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Adres e-mail</th>
-        </tr>
-    </thead>
-    <tbody>
-    @if (Model.Users != null)
-    {
-        foreach (var user in Model.Users)
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numer</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Adres e-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model.Users != null)
         {
-            
-            if(@user.IsAdvertizer == true)
+            foreach (var user in Model.Users)
             {
-                <tr>
-                    <td> @user.Id </td>
-                    <td> @user.Name </td>
-                    <td> @user.Surname </td>
-                    <td> @user.Email </td>
-                    <td>
-                        <form method="post">
-                            @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
-                            {
-                                <!-- <snippet_Rate> -->
-                                <button type="submit" asp-page-handler="rate">Oceń wystawiającego</button>
+                
+                if(@user.IsAdvertizer == true)
+                {
+                    <tr>
+                        <td> @user.Id </td>
+                        <td> @user.Name </td>
+                        <td> @user.Surname </td>
+                        <td> @user.Email </td>
+                        <td>
+                            <form method="post">
+                                @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
+                                {
+                                    <!-- <snippet_Rate> -->
+                                    <button type="submit" asp-page-handler="rate">Oceń wystawiającego</button>
+                                    <input type="hidden" name="id" value="@user.Id" />
+                                    <!-- </snippet_Rate> -->
+                                }
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <!-- <snippet_ShowOpinions> -->
+                                <button type="submit" asp-page-handler="showOpinions">Pokaż opinie o wystawiającym</button>
                                 <input type="hidden" name="id" value="@user.Id" />
-                                <!-- </snippet_Rate> -->
-                            }
-                        </form>
-                        <form method="post">
-                            <!-- <snippet_ShowOpinions> -->
-                            <button type="submit" asp-page-handler="showOpinions">Pokaż opinie o wystawiającym</button>
-                            <input type="hidden" name="id" value="@user.Id" />
-                            <!-- </snippet_ShowOpinions> -->
-                        </form>
-                        <form method="post">
-                            @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
-                            {
-                                <!-- <snippet_Message> -->
-                                <button type="submit" asp-page-handler="message">Napisz wiadomość</button>
-                                <input type="hidden" name="advertizerId" value="@user.Id" />
-                                <input type="hidden" name="clientId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
-                                <!-- </snippet_Message> -->
-                            }
-                            @if (@user.Id == @ClaimsPrincipalExtension.GetUserId(@User))
-                            {
-                                <!-- <snippet_ShowMessages> -->
-                                <button type="submit" asp-page-handler="showMessages">Zobacz wiadomości</button>
-                                <input type="hidden" name="advertizerId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
-                                <!-- </snippet_ShowMessages> -->
-                            }
-                        </form>
-                    </td>
-                </tr>
+                                <!-- </snippet_ShowOpinions> -->
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                @if (@user.Id != @ClaimsPrincipalExtension.GetUserId(@User))
+                                {
+                                    <!-- <snippet_Message> -->
+                                    <button type="submit" asp-page-handler="message">Napisz wiadomość</button>
+                                    <input type="hidden" name="advertizerId" value="@user.Id" />
+                                    <input type="hidden" name="clientId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
+                                    <!-- </snippet_Message> -->
+                                }
+                                @if (@user.Id == @ClaimsPrincipalExtension.GetUserId(@User))
+                                {
+                                    <!-- <snippet_ShowMessages> -->
+                                    <button type="submit" asp-page-handler="showMessages">Zobacz wiadomości</button>
+                                    <input type="hidden" name="advertizerId" value="@ClaimsPrincipalExtension.GetUserId(@User)" />
+                                    <!-- </snippet_ShowMessages> -->
+                                }
+                            </form>
+                        </td>
+                    </tr>
+                }
             }
         }
-    }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+else
+{
+    <h1>Błąd</h1>
+    <p>Zaloguj się, by zobaczyć wystawiających.</p>
+}
