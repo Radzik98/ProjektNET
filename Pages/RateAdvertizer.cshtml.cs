@@ -9,9 +9,9 @@ namespace ProjektNET.Pages
     [AllowAnonymous]
     public class RateAdvertizerModel : PageModel
     {
-        private readonly Data.RateDbContext _context;
+        private readonly Data.MyDbContext _context;
 
-        public RateAdvertizerModel(Data.RateDbContext context)
+        public RateAdvertizerModel(Data.MyDbContext context)
         {
             _context = context;
         }

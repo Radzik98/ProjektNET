@@ -15,11 +15,11 @@ namespace ProjektNET.Models
         public string? Name { get; set; }
 
         [Display(Name = "Nazwisko")]
-        [Required, StringLength(20)]
+        [Required, StringLength(100)]
         public string? Surname { get; set; }
 
         [Display(Name = "Adres e-mail")]
-        [Required, StringLength(20)]
+        [Required, StringLength(100)]
         public string? Email { get; set; }
 
         [DataType(DataType.Password)]

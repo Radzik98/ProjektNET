@@ -7,12 +7,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjektNET.Pages
 {
-    //[Authorize]
     public class ResetPasswordModel : PageModel
     {
-        private readonly ProjektNET.Data.UserDbContext _context;
+        private readonly ProjektNET.Data.MyDbContext _context;
 
-        public ResetPasswordModel(ProjektNET.Data.UserDbContext context)
+        public ResetPasswordModel(ProjektNET.Data.MyDbContext context)
         {
             _context = context;
         }

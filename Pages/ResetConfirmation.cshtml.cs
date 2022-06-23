@@ -11,9 +11,9 @@ namespace ProjektNET.Pages
     public class ResetConfirmationModel : PageModel
     {
  
-        private readonly UserDbContext Db;
+        private readonly MyDbContext Db;
  
-        public ResetConfirmationModel(UserDbContext Db)
+        public ResetConfirmationModel(MyDbContext Db)
         {
             this.Db = Db;
         }

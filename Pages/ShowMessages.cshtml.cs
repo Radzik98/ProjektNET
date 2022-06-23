@@ -10,11 +10,11 @@ namespace ProjektNET.Pages
 {
     public class ShowMessagesModel : PageModel
     {
-        private readonly Data.MessageDbContext _messageContext;
+        private readonly Data.MyDbContext _messageContext;
 
-        private readonly Data.UserDbContext _userContext;
+        private readonly Data.MyDbContext _userContext;
         
-        public ShowMessagesModel(Data.MessageDbContext messageContext, Data.UserDbContext userContext)
+        public ShowMessagesModel(Data.MyDbContext messageContext, Data.MyDbContext userContext)
         {
             _messageContext = messageContext;
             _userContext = userContext;

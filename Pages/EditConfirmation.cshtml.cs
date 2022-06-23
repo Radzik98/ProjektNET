@@ -11,9 +11,9 @@ namespace ProjektNET.Pages
     public class EditConfirmationModel : PageModel
     {
  
-        private readonly UserDbContext Db;
+        private readonly MyDbContext Db;
  
-        public EditConfirmationModel(UserDbContext Db)
+        public EditConfirmationModel(MyDbContext Db)
         {
             this.Db = Db;
         }

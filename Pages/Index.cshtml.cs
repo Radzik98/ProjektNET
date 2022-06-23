@@ -6,11 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ProjektNET.Pages
 {
-    //[Authorize]
     public class IndexModel : PageModel
     {
-        readonly ProjektNET.Data.UserDbContext _context;
-        public IndexModel(ProjektNET.Data.UserDbContext context)
+        readonly ProjektNET.Data.MyDbContext _context;
+        public IndexModel(ProjektNET.Data.MyDbContext context)
         {
             _context = context;
         }

@@ -16,9 +16,9 @@ namespace ProjektNET.Pages
     public class LoginModel : PageModel
     {
  
-        private readonly UserDbContext Db;
+        private readonly MyDbContext Db;
  
-        public LoginModel(UserDbContext Db)
+        public LoginModel(MyDbContext Db)
         {
             this.Db = Db;
         }

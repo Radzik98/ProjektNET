@@ -9,9 +9,9 @@ namespace ProjektNET.Pages
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly Data.UserDbContext _context;
+        private readonly Data.MyDbContext _context;
 
-        public RegisterModel(Data.UserDbContext context)
+        public RegisterModel(Data.MyDbContext context)
         {
             _context = context;
         }
