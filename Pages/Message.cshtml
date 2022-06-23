@@ -8,7 +8,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Ty</th>
+            <th>Klient</th>
             <th>Wlasciciel</th>
         </tr>
     </thead>
@@ -43,11 +43,11 @@
             <input asp-for="value" class="form-control" />
             @if (Model.specialId == @ClaimsPrincipalExtension.GetUserId(@User))
             {
-                <button type="submit" class="btn btn-primary" asp-page-handler="ClientMessage">Filtruj</button>
+                <button type="submit" class="btn btn-primary" asp-page-handler="ClientMessage">Wyślij</button>
             }
             else
             {
-                <button type="submit" class="btn btn-primary" asp-page-handler="AdvertizerMessage">Filtruj</button>
+                <button type="submit" class="btn btn-primary" asp-page-handler="AdvertizerMessage">Wyślij</button>
             }
         </div>
     </p>

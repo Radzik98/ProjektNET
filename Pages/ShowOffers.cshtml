@@ -2,82 +2,113 @@
 @model ProjektNET.Pages.ShowOfferModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using ProjektNET.Extensions
+@using Microsoft.AspNetCore.Identity
 
-<h1>Contacts home page</h1>
-<form method="post">
-    <p>
-        <div class="row">
-            Filtruj według kategorii:
-            <input asp-for="category" class="form-control" /> 
-            <button type="submit" class="btn btn-primary" asp-page-handler="sort">Filtruj</button>
-        </div>
-    </p>
-    <p>
-        <div class="row">
-            Filtruj według kategorii:
-            <input asp-for="category2" class="form-control" />
-            <input asp-for="description" class="form-control" /> 
-            <input asp-for="location" class="form-control" /> 
+@if(User.Identity.IsAuthenticated)
+{
+    <h1>Aktualne oferty</h1>
+    <form method="post">
+        <p>
+            <b>Filtruj według kategorii:</b>
+            <div class="row">
+                <div class="col-4">  
+                    <label asp-for="category">Kategoria</label> 
+                </div>  
+                <div class="col-8">  
+                    <input asp-for="category" class="form-control" />  
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary" asp-page-handler="search">Filtruj</button>
-        </div>
-    </p>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Opis</th>
-            <th>Kategoria</th>
-            <th>Lokalizacja</th>
-            <th>Wystawiający</th>
-        </tr>
-    </thead>
-    <tbody>
-    @if (Model.Offers != null)
-    {
-        foreach (var offer in Model.Offers)
+        </p>
+        <p>
+            <b>Wyszukaj według kategorii, opisu lub lokalizacji:</b>
+            <div class="row">
+                <div class="col-4">  
+                    <label asp-for="category2">Kategoria</label> 
+                </div>  
+                <div class="col-8">  
+                    <input asp-for="category2" class="form-control" />  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">  
+                    <label asp-for="description">Opis</label> 
+                </div>  
+                <div class="col-8">  
+                    <input asp-for="description" class="form-control" />  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">  
+                    <label asp-for="location">Lokalizacja</label> 
+                </div>  
+                <div class="col-8">  
+                    <input asp-for="location" class="form-control" />  
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" asp-page-handler="search">Wyszukaj</button>
+        </p>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Opis</th>
+                <th>Kategoria</th>
+                <th>Lokalizacja</th>
+                <th>Wystawiający</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model.Offers != null)
         {
-            
-            if(@offer.Active == true)
+            foreach (var offer in Model.Offers)
             {
-                <tr>
-                    <td> @offer.Description </td>
-                    <td> @offer.Category </td>
-                    <td> @offer.Location </td>
-                    <td> @offer.Advertizer </td>
-                    <td> @offer.Id </td>
-                    <td>
-                        <form method="post">
-                            @if (@offer.Interested == 0)
-                            {
-                                <!-- <snippet_Interested> -->
-                                <button type="submit" asp-page-handler="interested">Jestem zainteresowany ofertą</button>
-                                <input type="hidden" name="id" value="@offer.Id" />
-                                <!-- </snippet_Interested> -->
-                            }
-                            @if (@offer.Interested == @ClaimsPrincipalExtension.GetUserId(@User))
-                            {
-                                <!-- <snippet_Interested> -->
-                                <button type="submit" asp-page-handler="interested">Odwołuję zainteresowanie ofertą</button>
-                                <input type="hidden" name="id" value="@offer.Id" />
-                                <!-- </snippet_Interested> -->
-                            }
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post">
-                            @if (@offer.Advertizer == @ClaimsPrincipalExtension.GetUserId(@User))
-                            {
-                                <!-- <snippet_Completed> -->
-                                <button type="submit" asp-page-handler="completed">Oznacz ofertę jako zrealizowaną</button>
-                                <input type="hidden" name="id" value="@offer.Id" />
-                                <!-- </snippet_Completed> -->
-                            }
-                        </form>
-                    <td/>
-                </tr>
+                
+                if(@offer.Active == true)
+                {
+                    <tr>
+                        <td> @offer.Description </td>
+                        <td> @offer.Category </td>
+                        <td> @offer.Location </td>
+                        <td> @offer.Advertizer </td>
+                        <td>
+                            <form method="post">
+                                @if (@offer.Interested == 0)
+                                {
+                                    <!-- <snippet_Interested> -->
+                                    <button type="submit" asp-page-handler="interested">Jestem zainteresowany ofertą</button>
+                                    <input type="hidden" name="id" value="@offer.Id" />
+                                    <!-- </snippet_Interested> -->
+                                }
+                                @if (@offer.Interested == @ClaimsPrincipalExtension.GetUserId(@User))
+                                {
+                                    <!-- <snippet_Interested> -->
+                                    <button type="submit" asp-page-handler="interested">Odwołuję zainteresowanie ofertą</button>
+                                    <input type="hidden" name="id" value="@offer.Id" />
+                                    <!-- </snippet_Interested> -->
+                                }
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                @if (@offer.Advertizer == @ClaimsPrincipalExtension.GetUserId(@User))
+                                {
+                                    <!-- <snippet_Completed> -->
+                                    <button type="submit" asp-page-handler="completed">Oznacz ofertę jako zrealizowaną</button>
+                                    <input type="hidden" name="id" value="@offer.Id" />
+                                    <!-- </snippet_Completed> -->
+                                }
+                            </form>
+                        <td/>
+                    </tr>
+                }
             }
         }
-    }
-    </tbody>
-</table>
-<a asp-page="AddOffer">Create New</a>
+        </tbody>
+    </table>
+}
+else
+{
+    <h1>Błąd</h1>
+    <p>Zaloguj się, by zobaczyć aktualne oferty.</p>
+}

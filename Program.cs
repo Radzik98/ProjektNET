@@ -11,32 +11,24 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseInMemoryDatabase("name"));
-
-builder.Services.AddDbContext<OfferDbContext>(options =>
-    options.UseInMemoryDatabase("name"));
-
-builder.Services.AddDbContext<RateDbContext>(options =>
-    options.UseInMemoryDatabase("name"));
-
-builder.Services.AddDbContext<MessageDbContext>(options =>
-    options.UseInMemoryDatabase("name"));
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyNewDatabase")));
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
-// void ConfigureServices(IServiceCollection services)
+// builder.Services.ConfigureApplicationCookie(options =>
 // {
-//     services.AddIdentity<ProjektNET.Models.User, IdentityRole>()
-//         .AddEntityFrameworkStores<UserDbContext>()
-//         .AddDefaultTokenProviders()
-//         .AddRoles<IdentityRole>();
+//     // Cookie settings
+//     options.Cookie.HttpOnly = true;
+//     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-
-// }
+//     options.LoginPath = "./Login";
+//     options.AccessDeniedPath = "./AccessDenied";
+//     options.SlidingExpiration = true;
+// });
 
 var app = builder.Build();
 

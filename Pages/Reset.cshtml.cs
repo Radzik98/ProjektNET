@@ -21,9 +21,9 @@ namespace ProjektNET.Pages
     {
         private UserManager<User> userManager;
 
-        private readonly UserDbContext Db;
+        private readonly MyDbContext Db;
  
-        public ResetModel(UserDbContext Db)
+        public ResetModel(MyDbContext Db)
         {
             this.Db = Db;
         }

@@ -2,7 +2,7 @@
 @model ProjektNET.Pages.ResetModel
  
 @{
-    ViewData["Title"] = "Reset";
+    ViewData["Title"] = "Resetowanie hasła";
 }
  
  
@@ -11,7 +11,7 @@
     <div class="col-md-4">
         <section>
             <form method="post">
-                <h4>Type your email.</h4>
+                <h4>Wpisz swój e-mail</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -20,7 +20,7 @@
                     <span asp-validation-for="Input!.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Wyślij link do zresetowania hasła</button>
                 </div>
             </form>
         </section>

@@ -10,8 +10,8 @@ namespace ProjektNET.Pages
 {
     public class ShowOfferModel : PageModel
     {
-        private readonly Data.OfferDbContext _context;
-        public ShowOfferModel(Data.OfferDbContext context)
+        private readonly Data.MyDbContext _context;
+        public ShowOfferModel(Data.MyDbContext context)
         {
             _context = context;
         }
