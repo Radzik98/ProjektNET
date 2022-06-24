@@ -19,7 +19,7 @@ namespace ProjektNET.Services
             mailMessage.From = new MailAddress("dotnecikprojekt@gmail.com");
             mailMessage.To.Add(new MailAddress(userEmail));
  
-            mailMessage.Subject = "Password Reset";
+            mailMessage.Subject = "Resetowanie";
             mailMessage.IsBodyHtml = true;
             mailMessage.Body = link;
  
